@@ -5,11 +5,11 @@ from RessoMusic import app
 import config
 
 TEXT = f"""
-🔒 **Privacy Policy for {app.mention} !**
+🔒 Privacy Policy for {app.mention} !
 
 Your privacy is important to us. To learn more about how we collect, use, and protect your data, please review our Privacy Policy here: [Privacy Policy]({config.PRIVACY_LINK}).
 
-If you have any questions or concerns, feel free to reach out to our [support team](https://t.me/NexGenSpam).
+If you have any questions or concerns, feel free to reach out to our [support team](https://t.me/Hindi_English_singing_group_chat).
 """
 
 @app.on_message(filters.command("privacy"))
