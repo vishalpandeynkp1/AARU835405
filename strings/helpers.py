@@ -162,3 +162,13 @@ HELP_16 = """
 /kickall : ᴋɪᴄᴋ ᴀʟʟ ɢʀᴏᴜᴘ ᴍᴇᴍʙᴇʀꜱ. (ᴏɴʟʏ ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ ᴇxᴇᴄᴜᴛᴇ ᴄᴍᴅ)
 /unpinall : ᴜɴᴘɪɴᴅ ᴀʟʟ ᴘɪɴɴᴇᴅ ᴍᴇꜱꜱᴇɢᴇꜱ ɪɴ ɢʀᴏᴜᴘ. (ᴏɴʟʏ ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ ᴇxᴇᴄᴜᴛᴇ ᴄᴍᴅ)
 """
+
+HELP_17 = """
+<b><u>Owners :</b></u>
+
+/leaveall1 - for assis 1
+/leaveall2 - for assis 2
+/leaveall3 - for assis 3
+/leaveall4 - for assis 4
+/leaveall5 - for assis 5
+"""
