@@ -10,7 +10,7 @@ from RessoMusic.utils.decorators.language import LanguageStart, languageCB
 from RessoMusic.utils.inline.help import help_back_markup, private_help_panel
 from config import BANNED_USERS, START_IMG_URL, SUPPORT_GROUP
 from strings import get_string, helpers
-
+from RessoMusic.misc import SUDOERS
 
 @app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
 @app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
@@ -90,4 +90,8 @@ async def helper_cb(client, CallbackQuery, _):
         await CallbackQuery.edit_message_text(helpers.HELP_15, reply_markup=keyboard)
     elif cb == "hb16":
         await CallbackQuery.edit_message_text(helpers.HELP_16, reply_markup=keyboard)
-    
+    elif cb == "hb17":
+        if CallbackQuery.from_user.id not in SUDOERS:
+            await CallbackQuery.answer("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴛʜᴇ ᴀᴅᴍɪɴ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ.ᴛʜɪꜱ ꜰᴇᴀᴛᴜʀᴇ ᴏɴʟʏ ꜰᴏʀ ʙᴏᴛ ᴀᴅᴍɪɴꜱ.", show_alert=True)
+            return
+        await CallbackQuery.edit_message_text(helpers.HELP_17, reply_markup=keyboard)
