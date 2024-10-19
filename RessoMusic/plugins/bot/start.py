@@ -23,6 +23,7 @@ from RessoMusic.utils.formatters import get_readable_time
 from RessoMusic.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
+from RessoMusic.misc import SUDOERS
 
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
@@ -110,6 +111,62 @@ async def start_gp(client, message: Message, _):
         reply_markup=InlineKeyboardMarkup(out),
     )
     return await add_served_chat(message.chat.id)
+
+
+welcome_group = 2
+@app.on_message(filters.new_chat_members, group=welcome_group)
+async def welcome(client, message: Message):
+    try:
+        chat_id = message.chat.id
+        for member in message.new_chat_members:
+            buttons = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text=member.first_name,  
+                            user_id=member.id        
+                        )
+                    ]
+                ]
+            )
+
+            if isinstance(config.OWNER_ID, int): 
+                if member.id == config.OWNER_ID:
+                    owner = f"#BOT_OWNER\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n{member.mention} 𝙊𝙬𝙣𝙚𝙧 𝗢𝗳 {app.mention} 𝙟𝙪𝙨𝙩 𝙟𝙤𝙞𝙣𝙚𝙙 𝙩𝙝𝙚 𝙜𝙧𝙤𝙪𝙥 <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Resso_music_group\n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Hindi_English_singing_group_chat \n┣★ 𝗕𝗼𝘁 𝗨𝘀𝗲𝗿𝗡𝗮𝗺𝗲 -: @{app.username}\n┣★ 𝗳𝗲𝗱𝗲𝗿𝗮𝘁𝗶𝗼𝗻𝘀 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> /joinfed f6c21c57-962c-4858-97a2-4d2f16cd68d6</code>\n┣★ 𝙉𝙤𝙩𝙚  -: 𝗧𝗵𝗶𝘀 𝗜𝘀 𝗢𝗻𝗹𝘆 𝗙𝗼𝗿 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗙𝗼𝗿 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 {member.mention}."
+                    sent_message = await message.reply_text(owner, reply_markup=buttons)
+                    await asyncio.sleep(180)
+                    await sent_message.delete()  
+                    return
+
+            elif isinstance(config.OWNER_ID, (list, set)): 
+                if member.id in config.OWNER_ID:
+                    owner = f"#BOT_OWNER\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n{member.mention} 𝙊𝙬𝙣𝙚𝙧 𝗢𝗳 {app.mention} 𝙟𝙪𝙨𝙩 𝙟𝙤𝙞𝙣𝙚𝙙 𝙩𝙝𝙚 𝙜𝙧𝙤𝙪𝙥 <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @Resso_music_group\n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @Hindi_English_singing_group_chat\n┣★ 𝗕𝗼𝘁 𝗨𝘀𝗲𝗿𝗡𝗮𝗺𝗲 -: @{app.username}\n┣★ 𝗳𝗲𝗱𝗲𝗿𝗮𝘁𝗶𝗼𝗻𝘀 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> /joinfed f6c21c57-962c-4858-97a2-4d2f16cd68d6</code>\n┣★ 𝙉𝙤𝙩𝙚  -: 𝗧𝗵𝗶𝘀 𝗜𝘀 𝗢𝗻𝗹𝘆 𝗙𝗼𝗿 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗙𝗼𝗿 𝗠𝘆 𝗢𝘄𝗻𝗲𝗿 {member.mention}."
+                    sent_message = await message.reply_text(owner, reply_markup=buttons)
+                    await asyncio.sleep(180) 
+                    await sent_message.delete()  
+                    return
+
+            if isinstance(SUDOERS, int): 
+                if member.id == SUDOERS:
+                    AMBOT = f"#Sudo_User\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n𝗢𝗙 {app.mention} 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 {member.mention} just joined the group <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗲𝗿𝗲 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @AMBOTYT  \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @AbhiModszYT_Return \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @AM_YTSupport \n┣★ 𝗕𝗼𝘁 𝗨𝗦𝗘𝗥𝗡𝗔𝗠𝗘 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗯𝗮𝗻 𝗟𝗼𝗴𝘀 -: @SuperBanSBots\n┣★ 𝓐𝓫𝓸𝓾𝓽 𝓐𝓶𝓑𝓸𝓽 -: @AbouT_AMBoT\n┣★ 𝗳𝗲𝗱𝗲𝗿𝗮𝘁𝗶𝗼𝗻𝘀 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> /joinfed f6c21c57-962c-4858-97a2-4d2f16cd68d6</code>."
+                    sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
+                    await asyncio.sleep(180) 
+                    await sent_message.delete()  
+                    return
+
+            elif isinstance(SUDOERS, (list, set)):
+                if member.id in SUDOERS:
+                    AMBOT = f"#Sudo_User\n\n 𝙎𝙩𝙖𝙮 𝘼𝙡𝙚𝙧𝙩 ⚠️\n\n𝗢𝗙 {app.mention} 𝗦𝗨𝗗𝗢 𝗨𝗦𝗘𝗥 {member.mention} just joined the group <code>{message.chat.title}</code>.\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗠𝗲 𝗛𝗘𝗥𝗘 👇🏻🤭💕\n\n┏━━━━━━━━━━━━┓\n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @AMBOTYT  \n┣★ 𝗨𝗽𝗱𝗮𝘁𝗲 -: @AbhiModszYT_Return \n┣★ 𝗦𝘂𝗽𝗽𝗼𝗿𝘁 -: @AM_YTSupport \n┣★ 𝗕𝗢𝗧 𝗨𝗦𝗘𝗥𝗡𝗔𝗠𝗘 -: @{app.username}\n┣★ 𝗦𝘂𝗽𝗲𝗿𝗕𝗮𝗻 𝗟𝗢𝗚𝗦 -: @SuperBanSBots\n┣★ 𝓐𝓫𝗼𝘂𝘁 𝓐𝗠𝗕𝗢𝗧 -: @AbouT_AMBoT\n┣★ 𝗳𝗲𝗱𝗲𝗿𝗮𝘁𝗶𝗼𝗻𝘀 𝗝𝗼𝗶𝗻 𝗛𝗲𝗿𝗲 -:<code> /joinfed f6c21c57-962c-4858-97a2-4d2f16cd68d6</code>."
+                    sent_message = await message.reply_text(AMBOT, reply_markup=buttons)
+                    await asyncio.sleep(180) 
+                    await sent_message.delete()  
+                    return
+
+        return
+    except Exception as e:
+        print(f"Error in welcome handler: {e}")
+        return
+
 
 
 @app.on_message(filters.new_chat_members, group=-1)
