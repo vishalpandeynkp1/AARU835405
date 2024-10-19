@@ -46,6 +46,7 @@ async def braodcast_message(client, message, _):
         if "-wfchat" in message.text or "-wfuser" in message.text:
             # Broadcasting to chats
             sent_chats = 0
+            AM_chats = len(await get_served_chats())
             chats = [int(chat["chat_id"]) for chat in await get_served_chats()]
             for i in chats:
                 try:
@@ -59,11 +60,12 @@ async def braodcast_message(client, message, _):
                     await asyncio.sleep(fw.x)
                 except:
                     continue
-            await message.reply_text(f"Broadcast to chats completed! Sent to {sent_chats} chats.")
+            await message.reply_text(f"Broadcast to chats completed! Sent to {AM_chats} chats.")
 
         if "-wfuser" in message.text:
             # Broadcasting to users
             sent_users = 0
+            AM_users = len(await get_served_users())
             users = [int(user["user_id"]) for user in await get_served_users()]
             for i in users:
                 try:
@@ -77,7 +79,7 @@ async def braodcast_message(client, message, _):
                     await asyncio.sleep(fw.x)
                 except:
                     continue
-            await message.reply_text(f"Broadcast to users completed! Sent to {sent_users} users.")
+            await message.reply_text(f"Broadcast to users completed! Sent to {AM_users} users.")
 
         IS_BROADCASTING = False
         return
@@ -112,6 +114,8 @@ async def braodcast_message(client, message, _):
         sent = 0
         pin = 0
         chats = []
+        AM_chats = len(await get_served_chats())
+        AM_users = len(await get_served_users())
         schats = await get_served_chats()
         for chat in schats:
             chats.append(int(chat["chat_id"]))
@@ -144,7 +148,7 @@ async def braodcast_message(client, message, _):
             except:
                 continue
         try:
-            await message.reply_text(_["broad_3"].format(sent, pin))
+            await message.reply_text(_["broad_3"].format(AM_chats, pin))
         except:
             pass
 
@@ -152,6 +156,8 @@ async def braodcast_message(client, message, _):
         susr = 0
         served_users = []
         susers = await get_served_users()
+        AM_chats = len(await get_served_chats())
+        AM_users = len(await get_served_users())
         for user in susers:
             served_users.append(int(user["user_id"]))
         for i in served_users:
@@ -171,7 +177,7 @@ async def braodcast_message(client, message, _):
             except:
                 pass
         try:
-            await message.reply_text(_["broad_4"].format(susr))
+            await message.reply_text(_["broad_4"].format(AM_users))
         except:
             pass
 
