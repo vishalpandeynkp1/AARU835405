@@ -8,11 +8,8 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from youtubesearchpython.__future__ import VideosSearch
 from RessoMusic.utils.thumbnails2 import thumb1
 
-
 logging.basicConfig(level=logging.INFO)
 
-
-    
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
     heightRatio = maxHeight / image.size[1]
