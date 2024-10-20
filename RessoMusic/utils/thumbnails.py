@@ -1,6 +1,3 @@
-# ATLEAST GIVE CREDITS IF YOU STEALING :(((((((((((((((((((((((((((((((((((((
-# ELSE NO FURTHER PUBLIC THUMBNAIL UPDATES
-
 import random
 import logging
 import os
@@ -9,9 +6,13 @@ import aiofiles
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from youtubesearchpython.__future__ import VideosSearch
+from RessoMusic.utils.thumbnails2 import thumb1
+
 
 logging.basicConfig(level=logging.INFO)
 
+
+    
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
     heightRatio = maxHeight / image.size[1]
@@ -108,6 +109,12 @@ def draw_text_with_shadow(background, draw, position, text, font, fill, shadow_o
     draw.text(position, text, font=font, fill=fill)
 
 async def gen_thumb(videoid: str):
+    thumb_functions = [thumb1, thumb2]
+    selected_function = random.choice(thumb_functions)
+    thumbnail_path = await selected_function(videoid)
+    return gen_thumb
+    
+async def thumb2(videoid: str):
     try:
         if os.path.isfile(f"cache/{videoid}_v4.png"):
             return f"cache/{videoid}_v4.png"
