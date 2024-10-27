@@ -1,45 +1,24 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import os
-options = Options()
-prefs = {'exit_type': 'Normal'}
-options.add_experimental_option("prefs", {'profile': prefs})
-options.add_argument(f"user-data-dir={os.getcwd()}/chrome")
-options.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
-options.add_argument("no-sandbox")
-options.add_argument('start-maximized')
-options.add_argument('disable-infobars')
-options.add_argument("--autoplay-policy=no-user-gesture-required")
-options.add_experimental_option("excludeSwitches", ['enable-automation'])
-driver = webdriver.Chrome(options=options)
-def save_cookies_to_netscape_file(cookies, output_file):
-    try:
-        with open(output_file, 'w') as f:
-            f.write("# Netscape HTTP Cookie File\n")
-            f.write("# This is a generated file! Do not edit.\n\n")
-            f.write("# domain\tinclude_subdomains\tpath\tsecure\texpiration_date\tname\tvalue\n")
-            for cookie in cookies:
-                domain = cookie.get('domain', '')
-                path = cookie.get('path', '/')
-                secure = "TRUE" if cookie.get('secure') else "FALSE"
-                expiry = cookie.get('expiry') or cookie.get('expires') or 0
-                name = cookie.get('name', '')
-                value = cookie.get('value', '')
-                f.write(f"{domain}\tTRUE\t{path}\t{secure}\t{int(expiry)}\t{name}\t{value}\n")
-        return f"Cookies have been saved to {output_file}"
-    except Exception as e:
-        return f"An error occurred: {e}"
-while True:
-    user_input = input("Login to your YouTube account and play a video [Completed] (Y/N): ")
-    if user_input.upper() == "Y":
-        print('Hello, logged in to your account..!')
-        break
-while True:
-    user_input = input("Enter a name for your cookies file: ")
-    if user_input:
-        output_file = f"{user_input}.txt"
-        break
-cookies = driver.get_cookies()
-output_file = os.path.join(os.getcwd(), output_file)
-print(save_cookies_to_netscape_file(cookies, output_file))
-driver.quit()
+# Netscape HTTP Cookie File
+# This is a generated file! Do not edit.
+
+# domain	include_subdomains	path	secure	expiration_date	name	value
+.youtube.com	TRUE	/	TRUE	1761591046	__Secure-1PSIDCC	AKEyXzUUL3pexwpo2VZUDRWQmM2XZvadeihyHzAZW645B97yuNSzBralcAysJXtqWmjlA_F-
+.youtube.com	TRUE	/	TRUE	1761591046	__Secure-3PSIDCC	AKEyXzU5v7s8G4ili_CjJjJLB7kY358gx2jTRqV7l2HRB5QvqZPQA6amGtuogPJV7CLkTU5y6w
+.youtube.com	TRUE	/	TRUE	0	YSC	d2mG9HOTJrk
+.youtube.com	TRUE	/	TRUE	1764614985	LOGIN_INFO	AFmmF2swRgIhAOY1Xsac1wDGdMCmTOt7yxEWSqUbs-Mm-WBmNb_JkmcfAiEAo1Bwo1aQcXg6hkHXncnYW2KGNo3Y0RK4-t9ZZZUqZY0:QUQ3MjNmenQxMnBQQlZnM2Jzak1qLS1pODVYR2ZaLXRUakt3SDdsSnJreFAtY2p4Q1NJMDV0NWs1Nmxfc0VGOWU4Q29yb0xLcnlWbzUwUDBiWjFnWi1xUk5xLTZ5a0dQNml0YVZLTHFTQWdHUWVtdk5tQVQ1MTlGZkRkYVNtOXpoYmluR2xyT1ByQXVOVVN0T0dUd0NZakVLQnFEaUR6SU13
+.youtube.com	TRUE	/	TRUE	1764614985	SAPISID	WkHUma0FSTe382qP/AwQmXGD93mWk9a-At
+.youtube.com	TRUE	/	FALSE	1764614985	APISID	qkoUFIWQPZdTYlL8/AgnEnJenRsG77l2ED
+.youtube.com	TRUE	/	TRUE	1764614985	__Secure-3PAPISID	WkHUma0FSTe382qP/AwQmXGD93mWk9a-At
+.youtube.com	TRUE	/	TRUE	1764614985	__Secure-1PSID	g.a000pgil-tjw8ZSRq6vjLdZoNml6OQJcJGXpeQioAfQXqLfBJH6dhlOvG72Tv2Bu1k-F8tOjHQACgYKAY0SARQSFQHGX2MiIurls0w9V_Nje_IUM5yQlRoVAUF8yKoulD3qD6PGPJ-Z-BKkpsM40076
+.youtube.com	TRUE	/	FALSE	1761591046	SIDCC	AKEyXzVRu88iUTSc_nViHbQW5Ic8M_Jm_Qu71fwPYBv5CNwrZM4nXXYcksLqhMxQAdcxmQ5S
+.youtube.com	TRUE	/	TRUE	1764614985	__Secure-3PSID	g.a000pgil-tjw8ZSRq6vjLdZoNml6OQJcJGXpeQioAfQXqLfBJH6dtipGIqWWIysqvLjRmvOc8QACgYKAVUSARQSFQHGX2MizTK-HXoz-c3QCxaycmtv3xoVAUF8yKraWNNad2dJVUIVbYlfyNS00076
+.youtube.com	TRUE	/	TRUE	1761590985	__Secure-1PSIDTS	sidts-CjEBQT4rXxalgMX11N37W4rt-ibhqzpy2ZaCN3JyaQX3E9hU3Ygt8srBHL8RXu0hXrNnEAA
+.youtube.com	TRUE	/	FALSE	1764614985	HSID	AbyH0cna9WbxdvVTh
+.youtube.com	TRUE	/	TRUE	1764615041	PREF	tz=Asia.Calcutta
+.youtube.com	TRUE	/	TRUE	1764614985	SSID	AvZvgCXiF63sCO_Pj
+.youtube.com	TRUE	/	TRUE	1745606667	VISITOR_PRIVACY_METADATA	CgJJThIEGgAgYA%3D%3D
+.youtube.com	TRUE	/	TRUE	1730056467	GPS	1
+.youtube.com	TRUE	/	TRUE	1764614985	__Secure-1PAPISID	WkHUma0FSTe382qP/AwQmXGD93mWk9a-At
+.youtube.com	TRUE	/	FALSE	1764614985	SID	g.a000pgil-tjw8ZSRq6vjLdZoNml6OQJcJGXpeQioAfQXqLfBJH6da04c00i_clqT4BDY_sMbFQACgYKATwSARQSFQHGX2MiqqG4WhHq-QCIFG9C06eXgxoVAUF8yKrw60N2UkfP0Bj9Bd0jJ29r0076
+.youtube.com	TRUE	/	TRUE	1761590985	__Secure-3PSIDTS	sidts-CjEBQT4rXxalgMX11N37W4rt-ibhqzpy2ZaCN3JyaQX3E9hU3Ygt8srBHL8RXu0hXrNnEAA
+.youtube.com	TRUE	/	TRUE	1745606667	VISITOR_INFO1_LIVE	qGBvG6ZKv-Y
