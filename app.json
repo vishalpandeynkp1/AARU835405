@@ -1,10 +1,10 @@
 {
 
-    "name": "AMBOTOP Music",
+    "name": "Resso Music",
 
     "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
 
-    "logo": "https://telegra.ph/AMBOTOP-02-24",
+    "logo": "https://telegra.ph/Resso-02-24",
 
     "keywords": [
 
@@ -14,7 +14,7 @@
 
     "bot",
 
-    "AMBOTOP",
+    "Resso",
 
     "MusicBot",
 
