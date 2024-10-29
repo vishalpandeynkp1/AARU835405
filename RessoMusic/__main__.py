@@ -6,7 +6,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from RessoMusic import LOGGER, app, userbot
-from RessoMusic.core.call import AJBOTOP
+from RessoMusic.core.call import AMBOTOP
 from RessoMusic.misc import sudo
 from RessoMusic.plugins import ALL_MODULES
 from RessoMusic.utils.database import get_banned_users, get_gbanned
@@ -40,7 +40,7 @@ async def init():
     await userbot.start()
     await AMBOTOP.start()
     try:
-        await AJBOTOP.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
+        await AMBOTOP.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
         LOGGER("RessoMusic").error(
             "Please turn on the videochat of your log group\channel.\n\nStopping Bot..."
@@ -48,14 +48,14 @@ async def init():
         exit()
     except:
         pass
-    await AJBOTOP.decorators()
+    await AMBOTOP.decorators()
     LOGGER("RessoMusic").info(
         "BsdK Resso Music Start Hoga Be Ab"
     )
     await idle()
     await app.stop()
     await userbot.stop()
-    LOGGER("RessoMusic").info("Stopping AJBOTOP Music Bot...")
+    LOGGER("RessoMusic").info("Stopping AMBOTOP Music Bot...")
 
 
 if __name__ == "__main__":
