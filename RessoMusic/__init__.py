@@ -11,7 +11,7 @@ git()
 dbb()
 heroku()
 
-app = AMBOTOP()
+app = AJBOTOP()
 userbot = Userbot()
 
 
