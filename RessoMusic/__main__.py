@@ -14,7 +14,6 @@ from config import BANNED_USERS
 
 
 async def init():
-    # Check if all client variables are set
     if (
         not config.STRING1
         and not config.STRING2
@@ -24,10 +23,7 @@ async def init():
     ):
         LOGGER(__name__).error("Assistant client variables not defined, exiting...")
         exit()
-
-    await sudo()  # Ensure sudo privileges
-    
-    # Get banned users and add them to BANNED_USERS
+    await sudo()
     try:
         users = await get_gbanned()
         for user_id in users:
@@ -35,45 +31,32 @@ async def init():
         users = await get_banned_users()
         for user_id in users:
             BANNED_USERS.add(user_id)
-    except Exception as e:
-        LOGGER(__name__).warning(f"Error fetching banned users: {e}")
-
-    # Start the main bot app
+    except:
+        pass
     await app.start()
-
-    # Import all plugins
     for all_module in ALL_MODULES:
         importlib.import_module("RessoMusic.plugins" + all_module)
     LOGGER("RessoMusic.plugins").info("Successfully Imported Modules...")
-
-    # Start userbot and AMBOTOP
     await userbot.start()
     await AMBOTOP.start()
-
     try:
-        # Stream the intro video
         await AMBOTOP.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
         LOGGER("RessoMusic").error(
-            "Please turn on the videochat of your log group/channel.\n\nStopping Bot..."
+            "Please turn on the videochat of your log group\channel.\n\nStopping Bot..."
         )
         exit()
-    except Exception as e:
-        LOGGER("RessoMusic").warning(f"Error streaming video: {e}")
-
-    # Start the decorator functions
+    except:
+        pass
     await AMBOTOP.decorators()
-    LOGGER("RessoMusic").info("Resso Music Bot Started")
-
-    # Wait for idle state
+    LOGGER("RessoMusic").info(
+        "BsdK Resso Music Start Hoga Be Ab"
+    )
     await idle()
-
-    # Stop the app and userbot
     await app.stop()
     await userbot.stop()
     LOGGER("RessoMusic").info("Stopping AMBOTOP Music Bot...")
 
 
-# Main entry point
 if __name__ == "__main__":
-    asyncio.run(init())  # Use asyncio.run() to run the main function
+    asyncio.get_event_loop().run_until_complete(init())
