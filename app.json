@@ -30,7 +30,7 @@
 
         "description": "Get this value from https://my.telegram.org",
 
-        "value": "29779494",
+        "value": "24912072",
 
         "required": true
 
@@ -40,7 +40,7 @@
 
         "description": "Get this value from https://my.telegram.org",
 
-        "value": "8412f75c1e9ff8a8b8cbd7e3849fd990",
+        "value": "1a9c568007ef51bed8fd2357947e5cb3",
 
         "required": true
 
@@ -100,7 +100,7 @@
 
         "description": "Your heroku app name",
 
-        "value": "moon",
+        "value": "Amazon",
 
         "required": false
 
