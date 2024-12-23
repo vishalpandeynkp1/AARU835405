@@ -50,7 +50,7 @@ async def init():
         pass
     await AMBOTOP.decorators()
     LOGGER("RessoMusic").info(
-        "BsdK Resso Music Start Hoga Be Ab"
+        "moon music started"
     )
     await idle()
     await app.stop()
