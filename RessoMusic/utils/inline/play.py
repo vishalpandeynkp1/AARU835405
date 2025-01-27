@@ -62,10 +62,10 @@ def stream_markup_timer(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="𝐔ᴘᴅᴀᴛᴇs", url=f"https://t.me/MoonMusic_Updates"
+                text="ϲнατ вσт", url=f"https://t.me/komalchatbot"
             ),
             InlineKeyboardButton(
-                text="𝗖ʟᴏɴᴇ", url=f"https://t.me/MoonMusic_Updates/687"
+                text="ηεω вσт", url=f"https://t.me/anjalixmusicbot"
             ),
         ],
     ]
@@ -83,10 +83,10 @@ def stream_markup(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="𝐔ᴘᴅᴀᴛᴇs", url=f"https://t.me/MoonMusic_Updates"
+                text="ϲнατ вσт", url=f"https://t.me/komalchatbot"
             ),
             InlineKeyboardButton(
-                text="𝗖ʟᴏɴᴇ", url="https://t.me/MoonMusic_Updates/687"
+                text="ηεω вσт", url="https://t.me/anjalixmusicbot"
             ),
         ],
     ]
