@@ -65,7 +65,7 @@ def stream_markup_timer(_, chat_id, played, dur):
                 text="ϲнαт", url=f"https://t.me/+OsAgHgPQwyU4Zjg1"
             ),
             InlineKeyboardButton(
-                text="ηεω вσт", url=f"https://t.me/Khwahish_Music_bot"
+                text="ηεω вσт", url=f"https://t.me/aaru_music_xRobot"
             ),
         ],
     ]
@@ -86,7 +86,7 @@ def stream_markup(_, chat_id):
                 text="ϲнατ", url=f"https://t.me/+OsAgHgPQwyU4Zjg1"
             ),
             InlineKeyboardButton(
-                text="ηεω вσт", url="https://t.me/Khwahish_Music_bot"
+                text="ηεω вσт", url="https://t.me/aaru_music_xRobot"
             ),
         ],
     ]
